@@ -7,20 +7,16 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
 
 def get_shows(genres: list, type_s: str, min_score: float):
-    
     genres = ','.join(genres)
     url = (f'https://api.jikan.moe/v4/anime?type={type_s}&min_score={min_score}&genres={genres}&sfw=True')
     r = requests.get(url)
     animes = r.json()
-    
-    print(len(animes['data']))
     list_final = []
     i = 0
     k = 1
     for anime in animes['data']:
         dict_of_suggestions = {}
         list_final.append(dict_of_suggestions)
-        
         list_final[i]['mal_id'] = anime['mal_id']
         list_final[i]['title'] = anime['title']
         list_final[i]['episodes'] = anime['episodes']
@@ -62,8 +58,6 @@ def home():
 
 @app.route('/generator', methods=['POST', 'GET'])
 def generator():
-    
-    
     if request.method == 'POST':
         type_anime = request.form['type']
         genres_a = request.form.getlist('list_of_genres')
@@ -84,12 +78,9 @@ def user():
         score = session['score']
         shows_info = get_shows(genres, a_type, score)
         shows = []
-        
         for i in shows_info:
             shows.append(i['title'])
-        
         num_shows = len(shows)
-        
         genre_names = get_genre_names(genres)
         empty_str = "*No recommendations found, please reduce the number of genres or lower the score rating."
         multiple_g = True
@@ -98,27 +89,17 @@ def user():
         recommendations = len(shows)
         if recommendations == 0:
             flash('*No animes fit your criteria. Please try reducing the number of genres or lowering the score rating.', 'info')
-        
-        
-            
-
         if recommendations > 0:
             return render_template('recommendation_page.html', genre=genre_names, type=a_type, min_score=score, t_or_f=multiple_g, num_shows=num_shows, shows_info=shows_info)
         else:
-            #return render_template('empty_recommendation_page.html')
-            #return render_template('generator_page.html', successful=successful)
             return redirect(url_for('generator'))
     else:
-        #return also what wasn't filled and put in a session then ask user to input it
         return redirect(url_for('generator'))
 
 @app.route('/redo')
 def redo():
     if 'type_anime' in session:
-
         a_type = session['type_anime']
-        #we can use a_genre and a_type in the flash msg below
-        #flash('You have been redirected back to generator.', 'info')
     session.pop('type_anime', None)
     return redirect(url_for('generator'))
 
@@ -128,14 +109,3 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-#Example of redirecting:
-# @app.route('/')
-# def home():
-#    return 'This is home page'
-#
-# app.route('/admin')
-# def admin():
-#   return redirect(url_for('home'))

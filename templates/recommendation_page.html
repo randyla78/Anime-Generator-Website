@@ -3,10 +3,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <head>
-
     <meta charset="UTF-8">
     <title>Recommendation</title>
-    
     <style>
         body{
             min-height: 100vh;
@@ -16,8 +14,6 @@
     </style>
 </head>
 <body>
-
-    
 
 <!--  
 <div id="slidingDiv" id="box2">
@@ -33,10 +29,7 @@
     
 <div class="container">
     {% for slide in shows_info %}
-   
-   
     <div class="box">
-        
         <div class="information">
             <p class="text" class="p">Title: {{slide.title}}</p>
             <p class="p"><b>Type:</b> {{type}}</p>
@@ -53,18 +46,13 @@
             <div class="video-container">
                 <iframe width="200px" height="130px" src="{{slide.trailer}}" allowfullscreen="allowfullscreen"></iframe>
             </div>
-            
-            
         </div>
-
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
         <div class="mini_box">
         <p id="r-index">Recommendation {{slide.index}}/{{num_shows}}</p>
         </div>
     </div>
-
-    
     {% endfor %}
     
   </div>
@@ -91,9 +79,5 @@
     
     </script>
 {% endblock %}
-
 </body>
-
-
-
 </html>

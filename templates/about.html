@@ -12,7 +12,6 @@
             background-size: cover;  
             background-color: #131316;
             color: antiquewhite;
-            
         }
     </style>
 </head>
@@ -24,17 +23,12 @@
     <div class="icons">
         <div class="icon invis">
             <img src="{{ url_for('static',filename='styles/images/yorku.png') }}" style="height: 80px;">
-            
         </div>
         <div class="icon invis">
             <img src="{{ url_for('static',filename='styles/images/lassonde.png') }}" style="height: 80px;">
         </div>
-        
         <p><i class="arrow invis about-arrow" id="down-arrow"></i></p>
-        
-        
     </div>
-
 
 </section>
 </div>
@@ -87,8 +81,6 @@
     const hiddenElements = document.querySelectorAll('.invis');
     hiddenElements.forEach((el) => observer.observe(el));
 </script>
-
-
 </body>
 {% endblock %}
 </html>
