@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <style>
+        body{
+            min-height: 100vh;
+            font-family: monospace;
+            background-size: cover;  
+            background-color: #131316;
+            color: antiquewhite;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="mid-align">
+<section class="sec invis" id="sec1">
+    <h1 class="headers">About me.</h1>
+    <p class="line-1 anim-typewriter">My name is Randy La and I am a first year computer science student at York University.</p>
+    <div class="icons">
+        <div class="icon invis">
+            <img src="{{ url_for('static',filename='styles/images/yorku.png') }}" style="height: 80px;">
+            
+        </div>
+        <div class="icon invis">
+            <img src="{{ url_for('static',filename='styles/images/lassonde.png') }}" style="height: 80px;">
+        </div>
+        
+        <p><i class="arrow invis about-arrow" id="down-arrow"></i></p>
+        
+        
+    </div>
+
+
+</section>
+</div>
+<div class="mid-align">
+<section class="sec invis" id="sec2">
+    <h1>This website.</h1>
+    <div style="position:static;max-width:700px;text-align: center;margin: 0 auto;">
+    <p>This website was created using python and Flask for the back-end to fetch information from API's, and uses HTML, CSS, and Js for the front-end. Based off of user inputs, I collected information to show recommendations for the user and presented the cover posters, sypnosis's, trailers, etc., of each recommendation. As my first website, I decided to be experimental hence the different themes in each template. <!--Stagger in the logo of all languages used above and below this text tilted and add like a 2 second delay--></p>
+    </div>
+    <div class="logos">
+        <div class="logo invis">
+            <img src="{{ url_for('static',filename='styles/images/jslogo.png') }}" style="height: 80px;">
+        </div>
+        <div class="logo invis">
+            <img src="{{ url_for('static',filename='styles/images/csslogo.png') }}" style="height: 180px;">
+        </div>
+        <div class="logo invis">
+            <img src="{{ url_for('static',filename='styles/images/htmllogo.png') }}" style="height: 180px;">
+        </div>
+        <div class="logo invis">
+            <img src="{{ url_for('static',filename='styles/images/python-logo.png') }}" style="height: 180px;">
+        </div>
+        <div class="logo invis">
+            <img src="{{ url_for('static',filename='styles/images/flasklogo.png') }}" style="height: 120px;">
+        </div>
+    </div>
+ </section>
+</div>
+<div class="mid-align">
+<section class="sec invis">
+    <h1>More stuff.</h1>
+    <p>For any details and inquiries, please feel free to contact me at randyla78@gmail.com<br>For more projects, click the logo below to visit my GitHub. Thank you</p>
+    
+    <a href="https://github.com/randyla78"><img src="{{ url_for('static',filename='styles/images/githublogo.png') }}" style="height: 120px;"></a>
+</section>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting){
+                entry.target.classList.add('show');
+            } 
+            else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+    const hiddenElements = document.querySelectorAll('.invis');
+    hiddenElements.forEach((el) => observer.observe(el));
+</script>
+
+
+</body>
+{% endblock %}
+</html>

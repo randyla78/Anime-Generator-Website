@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+
+    <style>
+        .top{
+            background-size: cover;
+            background-image: url({{ url_for('static',filename='styles/images/space1.jpg') }});
+        }
+        body{
+            
+            overflow-x: hidden;
+            
+            background-size: cover;
+            height: 200px;
+            background-color: black;
+            z-index: 2;
+            
+        }
+        .middle{
+            
+            z-index: 1;
+            background-image: url({{ url_for('static',filename='styles/images/city1.jpg') }});
+        }
+    </style>
+    
+</head>
+<body>
+
+<section class="top">
+    
+<p class="text" style="color: white" >Welcome to my first website</p>
+
+<img src="{{ url_for('static',filename='styles/images/galaxy1.png') }}" id="galaxy" class="p-img">
+<img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud-upper" class="p-img">
+
+<div id="title-box">
+    <p id="main-title">Anime Generator</p>
+    <img src="{{ url_for('static',filename='styles/images/starship.png') }}" id="starship" class="p-img">
+</div>
+<div id="container1">
+<h3 class="sec invis">Ever felt lost when browsing through a vast <br>and seemingly infinite selection of shows/movies?</h3>
+</div>
+<div id="arrow-container">
+    <p><i class="arrow invis" id="down-arrow"></i></p>
+</div>
+
+</section>
+
+<section class="middle">
+<a href="/generator">
+    <button class="buttons" id="new_recommendations">
+        Go to generator
+    </button>
+    
+    
+</a>
+<div id="container2">
+    <p class="invis">Use Anime Gen to find a show or movie aligning to your current mood and prefences!<br>Click 'Go to generator' below or click 'About' in the nav bar to learn more.</p>
+    </div>
+<img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud-upper2" class="p-img">
+
+
+<img src="{{ url_for('static',filename='styles/images/cloud.png') }}" id="cloud" class="p-img">
+<img src="{{ url_for('static',filename='styles/images/cloud.png') }}" id="cloud-1" class="p-img">
+    <img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud1-1" class="p-img">
+    <img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud1-2" class="p-img">
+    <img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud1-3" class="p-img">
+    <img src="{{ url_for('static',filename='styles/images/cloud5.png') }}" id="cloud5" class="p-img">
+    
+    <div id="star-container">
+        <img src="{{ url_for('static',filename='styles/images/star.png') }}" id="star2">
+    </div>
+    <img src="{{ url_for('static',filename='styles/images/cloud5.png') }}" id="cloud-upper1">
+    <img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud-upper3" class="p-img">
+    
+    
+  
+</section>
+
+
+<script>
+    let galaxy = document.getElementById('galaxy');
+    let starship = document.getElementById('starship');
+    let star2 = document.getElementById('star2');
+    let cloud_upper = document.getElementById('cloud-upper');
+    let cloud_upper1 = document.getElementById('cloud-upper1');
+    window.addEventListener('scroll', function(){
+  let value = window.scrollY;
+  
+  galaxy.style.right = -value * 1.5 + 'px';
+  star2.style.top = value * 1.2 + 'px';
+  star2.style.right = value * 1.55 + 'px';
+  starship.style.right = value * 0.4 + 'px';
+  starship.style.bottom = -value * 0.3 + 'px';
+  cloud_upper.style.right = value * 0.5 + 'px';
+  cloud_upper1.style.right = -value * 0.5 + 'px';
+});
+
+
+const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting){
+                entry.target.classList.add('show');
+            } 
+            else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+    const hiddenElements = document.querySelectorAll('.invis');
+    hiddenElements.forEach((el) => observer.observe(el));
+</script>
+
+{% endblock %}
+</body>
+
+</html>

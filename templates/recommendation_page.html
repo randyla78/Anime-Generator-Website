@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+<head>
+
+    <meta charset="UTF-8">
+    <title>Recommendation</title>
+    
+    <style>
+        body{
+            min-height: 100vh;
+            background-size: cover;          
+            background-image: url({{ url_for('static',filename='styles/images/city1.jpg') }});
+        }
+    </style>
+</head>
+<body>
+
+    
+
+<!--  
+<div id="slidingDiv" id="box2">
+{% if t_or_f %}
+<p class="p">Generator successful! The genres you have chosen are {{genre}} and the type is {{type}}</p>
+{% endif %}
+{% if t_or_f == False %}
+<p class="p">Generator successful! The genre you have chosen is {{genre}} and the type is {{type}}</p>
+{% endif %}
+<p>We have found {{num_shows}} show(s) that match your preferences</p>
+</div>
+-->
+    
+<div class="container">
+    {% for slide in shows_info %}
+   
+   
+    <div class="box">
+        
+        <div class="information">
+            <p class="text" class="p">Title: {{slide.title}}</p>
+            <p class="p"><b>Type:</b> {{type}}</p>
+            <p class="p"><b>Genres:</b> {{slide.list_genres}}</p>
+            <p class="p"><b>Score:</b> {{slide.score}}</p>
+            <p class="p"><b>Number of episodes:</b> {{slide.episodes}}</p>
+            <img class="images" src="{{slide.image_url}}">
+        </div>
+        <div class="synopsis_box">
+            <p class="text_container">Synopsis: <br>{{slide.synopsis}}</p>
+        </div>
+        <div class="video">
+            
+            <div class="video-container">
+                <iframe width="200px" height="130px" src="{{slide.trailer}}" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+            
+            
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        <div class="mini_box">
+        <p id="r-index">Recommendation {{slide.index}}/{{num_shows}}</p>
+        </div>
+    </div>
+
+    
+    {% endfor %}
+    
+  </div>
+  <a href="/redo">
+    <button class="buttons" id="new_recommendations1">
+        Generate New Preferences
+    </button>
+</a>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    Click arror<br>to go next
+  </div>
+  
+<script>
+    setTimeout(function() {
+      var slidingDiv = document.getElementById("slidingDiv");
+      slidingDiv.style.transform = "translateX(0%)";
+    }, 1000);
+    
+    setTimeout(function() {
+      var slidingDiv = document.getElementById("slidingDiv");
+      slidingDiv.style.transform = "translateX(-100%)";
+    }, 10000);
+    
+    </script>
+{% endblock %}
+
+</body>
+
+
+
+</html>

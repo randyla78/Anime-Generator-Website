@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Generator</title>
+
+    <style>
+        body{
+            min-height: 100vh;
+            background-size: cover;   
+                
+            background-image: url({{ url_for('static',filename='styles/images/city1.jpg') }});
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    
+
+<div class="box" id="gen-box">
+    <header id="header">
+        <h1 id="header-title">Anime Gen</h1>
+    </header>
+    <p>Welcome to my very first website and personal project. This generator uses python with flask to fetch information according to<!-- your--> user inputs from an api called Jikan which scrapes a website containing a large database of
+        tens of thousands of different shows and movies. To use, input your show/movie preferences below for recommendations catering to your preferences then hit 'Generate Preferences'.</p>
+    <!-- If you would prefer non-animated shows, click here for a generator
+     that collects TV information from IMDB.-->
+
+<form action="#" method="post">
+        <label>Genres (select 1 or more):</label>
+        <div class="select_menu">
+        <select name="list_of_genres" id="genres" multiple>
+            <option value="1">Action</option>
+            <option value="2">Adventure</option>
+            <option value="4">Comedy</option>
+            <!--<option value="6">Mythology</option>-->
+            <option value="7">Mystery</option>
+            <option value="8">Drama</option>
+            <!--<option value="9">Ecchi</option>-->
+            <option value="10">Fantasy</option>
+            <option value="5">Avant Garde</option>
+            <option value="11">Strategy Game</option>
+            <!--<option value="12">Hentai</option>-->
+            <option value="13">Historical</option>
+            <option value="14">Horror</option>
+            <option value="15">Kids</option>
+            <option value="17">Martial Arts</option>
+            <!--<option value="18">Mecha</option>-->
+            <option value="19">Music</option>
+            <!--<option value="20">Parody</option>-->
+            <option value="21">Samurai</option>
+            <option value="22">Romance</option>
+            <option value="23">School</option>
+            <option value="24">Sci-Fi</option>
+            <!--<option value="25">Shoujo</option>-->
+            <!--<option value="26">Girls Love</option>-->
+            <option value="27">Shounen</option>
+            <!--<option value="28">Boys Love</option>-->
+            <option value="29">Space</option>
+            <option value="30">Sports</option>
+            <option value="31">Super power</option>
+            <option value="3">Racing</option>
+            <!--<option value="32">Vampire</option>-->
+            <!--<option value="35">Harem</option>-->
+            <option value="36">Slice of Life</option>
+            <option value="37">Supernatural</option>
+            <option value="38">Military</option>
+            <option value="39">Detective</option>
+            <option value="40">Psychological</option>
+            <option value="41">Suspense</option>
+            <option value="46">Award Winning</option>
+            <option value="62">Isekai</option>
+            <!--
+            <option value="42">Seinen</option>
+            <option value="43">Josei</option>
+            <option value="47">Gourmet</option>
+            <option value="48">Workplace</option>
+            <option value="49">Erotica</option>
+            <option value="50">Adult Cast</option>
+            <option value="51">Anthropomorphic</option>
+            <option value="52">CGDCT</option>
+            <option value="53">Childcare</option>
+            <option value="54">Combat Sports</option>
+            <option value="Delinquents"></option>
+            <option value="56">Educational</option>
+            <option value="57">Gag Humor</option>
+            <option value="58">Gore</option>
+            <option value="59">High Stakes Game</option>
+            <option value="60">Idols (Female)</option>
+            <option value="61">Idols< (Male)/option>
+            <option value="63">Iyashikei</option>
+            <option value="64">Love Polygon</option>
+            <option value="65">Magical Sex Shift</option>
+            <option value="66">Mahou Shoujo</option>
+            <option value="67">Medical</option>
+            <option value="68">Organized Crime</option>
+            <option value="70">Performing Arts</option>
+            <option value="71">Pets</option>
+            <option value="72">Reincarnation</option>
+            <option value="73">Reverse Harem</option>
+            <option value="74">Romantic Subtext</option>
+            <option value="75">Showbiz</option>
+            <option value="76">Survival</option>
+            <option value="77">Team Sports</option>
+            <option value="79">Video Game</option>
+            <option value="80">Visual Arts</option>
+            <option value="81">Crossdressing</option>
+
+            -->
+        </select>
+        </div>
+
+        
+
+            <label>Type:</label>
+            <div>
+            <select name="type">
+                <option value="Tv">Tv Show</option>
+                <option>Movie</option>
+                <option value="Music">Music Video</option>
+                <option>Special</option>
+                <option value="OVA">OVA (Original Video Animation)</option>
+                <option value="ONA">ONA (Original Net Animation)</option>
+            </select>
+            </div>
+            <label>Minimum rating (?/10):</label>
+            <p><input type="text" id="scorebox" name="score" /> Input min score (for eg, '7.2')</p>
+
+            <button class="buttons" id="generate">Generate Preferences</button>
+            
+
+</form>
+
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p id="error">{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('genres')
+</script>
+
+    {% endblock %}
+</body>
+
+</html>
