@@ -1,10 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 import requests
-import os
+from boto.s3.connection import S3Connection
 
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY')
+secret_key = S3Connection(os.environ['secret_key'])
+app.secret_key = secret_key
 
 def get_shows(genres: list, type_s: str, min_score: float):
     genres = ','.join(genres)
