@@ -7,10 +7,6 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
 
 def get_shows(genres: list, type_s: str, min_score: float):
-    print('divider')
-    print(min_score)
-    print(type(min_score))
-    print('divider')
     genres = ','.join(genres)
     url = (f'https://api.jikan.moe/v4/anime?type={type_s}&min_score={min_score}&genres={genres}')
     r = requests.get(url)
