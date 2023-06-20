@@ -12,9 +12,8 @@
             background-image: url({{ url_for('static',filename='styles/images/space1.jpg') }});
         }
         body{
-            
+            overflow-anchor: none;
             overflow-x: hidden;
-            
             background-size: cover;
             height: 200px;
             background-color: black;
@@ -33,7 +32,7 @@
 
 <section class="top">
     
-<p class="text" style="color: white" >Welcome to my first website</p>
+
 
 <img src="{{ url_for('static',filename='styles/images/galaxy1.png') }}" id="galaxy" class="p-img">
 <img src="{{ url_for('static',filename='styles/images/cloud1.png') }}" id="cloud-upper" class="p-img">
@@ -46,18 +45,19 @@
 <h3 class="sec invis">Ever felt lost when browsing through a vast <br>and seemingly infinite selection of shows/movies?</h3>
 </div>
 <div id="arrow-container">
+    <p1 class="invis" id="t" style="position:absolute;right: 43%;bottom: 37vh;color:antiquewhite;font-family: monospace;">Scroll</p1>
     <p><i class="arrow invis" id="down-arrow"></i></p>
 </div>
 
 </section>
 
 <section class="middle">
+
+    
 <a href="/generator">
     <button class="buttons" id="new_recommendations">
         Go to generator
     </button>
-    
-    
 </a>
 <div id="container2">
     <p class="invis">Use Anime Gen to find a show or movie aligning to your current mood and prefences!<br>Click 'Go to generator' below or click 'About' in the nav bar to learn more.</p>

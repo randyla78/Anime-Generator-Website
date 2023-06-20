@@ -158,6 +158,25 @@ body {
     background-color: rgba(0,0,0,0.8);
   }
 
+  #reset-chess{
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: antiquewhite;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%, 135%);
+    
+}
+#reset-chess:hover{
+    background-color: rgb(118, 118, 118);
+}
+
   #new_recommendations{
     top: 91%;
     left: 50%;
@@ -165,6 +184,8 @@ body {
     bottom: 20px;
     background-color: rgba(0,0,0,0.5);
     color: antiquewhite;
+    min-height: 30px;
+    z-index: 9;
   }
   #new_recommendations:hover{
     background-color: rgb(118, 118, 118);

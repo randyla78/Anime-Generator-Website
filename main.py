@@ -7,8 +7,12 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
 
 def get_shows(genres: list, type_s: str, min_score: float):
+    print('divider')
+    print(min_score)
+    print(type(min_score))
+    print('divider')
     genres = ','.join(genres)
-    url = (f'https://api.jikan.moe/v4/anime?type={type_s}&min_score={min_score}&genres={genres}&sfw=True')
+    url = (f'https://api.jikan.moe/v4/anime?type={type_s}&min_score={min_score}&genres={genres}')
     r = requests.get(url)
     animes = r.json()
     list_final = []
@@ -54,7 +58,7 @@ def get_genre_names(genre_id_list):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return redirect(url_for('generator')) #should be index.html
 
 @app.route('/generator', methods=['POST', 'GET'])
 def generator():
@@ -76,6 +80,10 @@ def user():
         genres = session['genres']
         a_type = session['type_anime']
         score = session['score']
+        if score:
+            print(score)
+        else:
+            score=0
         shows_info = get_shows(genres, a_type, score)
         shows = []
         for i in shows_info:

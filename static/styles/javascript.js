@@ -2,9 +2,13 @@ var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
+    document.getElementById("t").style.opacity = "0";
     document.getElementById("down-arrow").style.border = "black";
+    
   } else {
+    document.getElementById("t").style.opacity = "0";
     document.getElementById("down-arrow").style.border = "black";
+    
   }
   prevScrollpos = currentScrollPos;
 }
